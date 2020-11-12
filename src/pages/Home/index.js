@@ -56,24 +56,6 @@ const Home = () => {
           setDataBerita(json.data)
           console.log(dataBerita)
       });
-
-    //call api method pos
-    
-    
-    // console.log('data object', dataBerita)
-    // console.log('data strigfy',JSON.stringify(dataBerita))
-    // fetch("https://reqres.in/api/users",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(dataBerita),
-    //   })
-    //   .then(response => response.json())
-    //   .then(json => {
-    //       console.log('post response databerita: ', dataBerita)
-    //   })
   }, []);
   return (
     <View style={{ flex: 1, marginTop: 20 }}>

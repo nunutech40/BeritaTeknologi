@@ -13,7 +13,10 @@ const InputText = ({placeholder ,...rest}) => {
 }
 const TestPostAxios = () => {
   const [dataKaryawan, setDataKaryawan] = useState({
-      
+      createdAt: '',
+      id: '',
+      job: '',
+      name: ''
   });
   const [bodyUser, setBodyUser] = useState({
     name: "",
@@ -33,9 +36,13 @@ const TestPostAxios = () => {
         setDataKaryawan(result.data)
     })
     .catch(err => console.log('errornya? ', err.toString()))
-      console.log("post response datakaryawan: ", dataKaryawan);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+        console.log("post response datakaryawan: ", dataKaryawan)
+    }, 3000);
+  }, [dataKaryawan])
   
   return (
     <View style={{ flex: 1, marginTop: 20, paddingHorizontal: 20 }}>

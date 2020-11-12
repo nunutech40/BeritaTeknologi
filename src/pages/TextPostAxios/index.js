@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
@@ -10,7 +11,7 @@ const InputText = ({placeholder ,...rest}) => {
         />
     )
 }
-const TestPost = () => {
+const TestPostAxios = () => {
   const [dataKaryawan, setDataKaryawan] = useState({
       
   });
@@ -27,17 +28,11 @@ const TestPost = () => {
   }
 
   const getData = () => {
-    fetch("https://reqres.in/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bodyUser),
+    Axios.post('https://reqres.in/api/users', bodyUser)
+    .then(result => {
+        setDataKaryawan(result.data)
     })
-      .then((response) => response.json())
-      .then((json) => {
-        setDataKaryawan(json);
-      });
+    .catch(err => console.log('errornya? ', err.toString()))
       console.log("post response datakaryawan: ", dataKaryawan);
   };
 
@@ -66,6 +61,6 @@ const TestPost = () => {
   );
 };
 
-export default TestPost
+export default TestPostAxios;
 
 const styles = StyleSheet.create({})
